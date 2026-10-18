@@ -6,8 +6,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
-<link rel="stylesheet" href="style.css"></head>
-<body><div class="app">
+<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="experiment2.css"></head>
+<body><nav class="tabs" role="tablist" aria-label="Experiments"><button id="tab1" role="tab" aria-selected="true" aria-controls="exp1">Experiment 1: Cursor Tracker</button><button id="tab2" role="tab" aria-selected="false" aria-controls="exp2">Experiment 2: Surface Test</button></nav><div class="app" id="exp1" role="tabpanel">
 <header><div><h1>OptiTrack Lab</h1><p class="sub">Live Mouse Movement Visualizer</p></div>
 <div class="badges"><span id="badge" class="badge">READY — PRESS START</span><span id="off" class="badge off">OFFLINE: CHECKING…</span></div></header>
 <section class="gcol"><div class="gwrap"><canvas id="cv" aria-label="XY graph of pointer movement" role="img"></canvas></div>
@@ -37,4 +37,4 @@
 <li>An optical mouse's internal sensor captures successive surface images and estimates relative movement.</li>
 <li>This app does not read the mouse's internal sensor frames or raw hardware displacement.</li></ul>
 <p class="disc">Live graph: browser-reported pointer coordinates. It is a visualization of cursor movement, not raw optical sensor data.</p></details>
-</section></div><script src="app.js"></script></body></html>
+</section></div><main id="exp2" class="exp" role="tabpanel" hidden></main><script src="app.js"></script><script src="experiment2.js"></script></body></html>
