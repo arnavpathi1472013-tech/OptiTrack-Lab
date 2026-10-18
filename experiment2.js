@@ -91,10 +91,10 @@ function status(){const t=$('#e2st');
 setInterval(status,500);
 function draw(){ctx.fillStyle='#0d1a33';ctx.fillRect(0,0,W,H);ctx.strokeStyle='rgba(120,160,220,.15)';ctx.lineWidth=1;ctx.beginPath();
  for(let x=0;x<W;x+=40){ctx.moveTo(x,0);ctx.lineTo(x,H)}for(let y=0;y<H;y+=40){ctx.moveTo(0,y);ctx.lineTo(W,y)}ctx.stroke();
- if(!pts.length){ctx.fillStyle='#8fa3c7';ctx.font='14px system-ui,sans-serif';ctx.textAlign='center';ctx.fillText(live?'Move a mouse over this area':'Live view off',W/2,H/2);ctx.textAlign='left';return}
- ctx.strokeStyle='#22d3ee';ctx.lineWidth=2;ctx.lineJoin='round';ctx.beginPath();let pen=false,l=null;
+ if(!pts.length){ctx.fillStyle='#8fa3c7';ctx.font='18px system-ui,sans-serif';ctx.textAlign='center';ctx.fillText(live?'Move a mouse over this area':'Live view off',W/2,H/2);ctx.textAlign='left';return}
+ ctx.strokeStyle='#22d3ee';ctx.lineWidth=4;ctx.lineJoin='round';ctx.beginPath();let pen=false,l=null;
  pts.forEach(p=>{if(!p){pen=false;return}if(pen)ctx.lineTo(p.x,p.y);else ctx.moveTo(p.x,p.y);pen=true;l=p});ctx.stroke();
- if(l){ctx.fillStyle='#ff4d4d';ctx.beginPath();ctx.arc(l.x,l.y,6,0,Math.PI*2);ctx.fill()}}
+ if(l){ctx.fillStyle='#ff4d4d';ctx.beginPath();ctx.arc(l.x,l.y,10,0,Math.PI*2);ctx.fill()}}
 (function loop(){if(dirty&&!root.hidden){draw();dirty=false}requestAnimationFrame(loop)})();
 
 /* tabs */
