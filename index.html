@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0a1428">
+<title>OptiTrack Lab</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="style.css"></head>
+<body><div class="app">
+<header><div><h1>OptiTrack Lab</h1><p class="sub">Live Mouse Movement Visualizer</p></div>
+<div class="badges"><span id="badge" class="badge">READY — PRESS START</span><span id="off" class="badge off">OFFLINE: CHECKING…</span></div></header>
+<section class="gcol"><div class="gwrap"><canvas id="cv" aria-label="XY graph of pointer movement" role="img"></canvas></div>
+<p class="disc">Live graph: browser-reported pointer coordinates. It is a visualization of cursor movement, not raw optical sensor data.</p>
+<p id="msg" class="msg" role="status"></p></section>
+<section class="side">
+<div class="read">
+<div><label>X</label><b id="rx">—</b></div><div><label>Y</label><b id="ry">—</b></div>
+<div><label>ΔX</label><b id="rdx">—</b></div><div><label>ΔY</label><b id="rdy">—</b></div>
+<div><label>Points</label><b id="rn">0</b></div><div><label>Direction</label><b id="rdir">—</b></div></div>
+<p class="small"><span id="coordlbl"></span> · Browser screen: <span id="rs">—</span> · Path ≈ <span id="rp">0</span> graph units (calculated, not physical distance)</p>
+<p id="mouse" class="small mouse">○ No mouse input yet</p>
+<div class="grp"><h2>Tracking</h2>
+<button id="start" class="pri">Start Tracking</button><button id="pause">Pause</button><button id="resume">Resume</button>
+<button id="clear">Clear Trail</button><button id="origin">Reset Origin</button></div>
+<div class="grp"><h2>View</h2>
+<button id="grid" aria-pressed="true">Toggle Grid</button><button id="vec" aria-pressed="true">Toggle Vectors</button>
+<button id="lab" aria-pressed="true">Toggle Labels</button><button id="coord">Switch Coordinate Mode</button><button id="full">Full Screen</button>
+<label class="sel">Max points <select id="max"><option>500</option><option>1000</option><option>2000</option><option>5000</option></select></label></div>
+<div class="grp demo"><h2>DEMO MODE (simulated)</h2>
+<button id="ddrag">Demo: Touch-Drag</button><button id="dsample">Demo: Sample Path</button></div>
+<div class="grp"><h2>Export</h2><button id="csv">Export CSV</button><button id="png">Export PNG</button></div>
+<details><summary>What does this graph show?</summary>
+<ul><li>The graph visualizes pointer movement reported by the operating system/browser.</li>
+<li>ΔX and ΔY are changes between consecutive recorded cursor positions.</li>
+<li>Vectors show the direction and magnitude of those coordinate changes.</li>
+<li>An optical mouse's internal sensor captures successive surface images and estimates relative movement.</li>
+<li>This app does not read the mouse's internal sensor frames or raw hardware displacement.</li></ul>
+<p class="disc">Live graph: browser-reported pointer coordinates. It is a visualization of cursor movement, not raw optical sensor data.</p></details>
+</section></div><script src="app.js"></script></body></html>
