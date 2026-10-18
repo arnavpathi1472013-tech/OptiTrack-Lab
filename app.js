@@ -1,7 +1,7 @@
 (()=>{'use strict';
 const $=s=>document.querySelector(s),cv=$('#cv'),ctx=cv.getContext('2d'),TAU=Math.PI*2;
 const KEYS=['coord','grid','vec','lab','max'];
-const ASSETS=['./','./index.html','./style.css','./app.js','./manifest.webmanifest','./icons/icon-192.png','./icons/icon-512.png','./icons/icon.svg'];
+const ASSETS=['./','./index.html','./style.css','./app.js','./manifest.webmanifest','./icons/icon-192.png','./icons/icon-512.png','./icons/icon.svg','./experiment2.js','./experiment2.css'];
 const S={mode:'idle',was:'live',demo:null,coord:'cart',grid:true,vec:true,lab:true,max:2000,pts:[],prev:null,origin:null,lastMouse:0,path:0,w:300,h:300,dirty:true,drag:false,t:0};
 try{const o=JSON.parse(localStorage.getItem('optitrack')||'{}');KEYS.forEach(k=>{if(k in o)S[k]=o[k]})}catch(e){}
 if(![500,1000,2000,5000].includes(S.max))S.max=2000;
