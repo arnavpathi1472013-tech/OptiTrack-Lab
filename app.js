@@ -104,7 +104,7 @@ setInterval(refresh,400);
 function draw(){
  const W=S.w,H=S.h,o=ori(),c=col(),st=50;
  ctx.clearRect(0,0,W,H);ctx.fillStyle='#0d1a33';ctx.fillRect(0,0,W,H);
- ctx.font='11px ui-monospace,Menlo,Consolas,monospace';
+ ctx.font='14px ui-monospace,Menlo,Consolas,monospace';
  if(S.grid){ctx.lineWidth=1;ctx.strokeStyle='rgba(120,160,220,.15)';ctx.beginPath();
   for(let x=((o.x%st)+st)%st;x<=W;x+=st){ctx.moveTo(x,0);ctx.lineTo(x,H)}
   for(let y=((o.y%st)+st)%st;y<=H;y+=st){ctx.moveTo(0,y);ctx.lineTo(W,y)}ctx.stroke()}
@@ -118,19 +118,19 @@ function draw(){
   ctx.fillText(S.coord==='cart'?'+Y ↑':'+Y ↓',clamp(o.x+6,2,W-40),S.coord==='cart'?12:H-6);
   ctx.fillText('(0,0)',clamp(o.x+4,2,W-40),clamp(o.y-6,12,H-4))}
  const P=S.pts,n=P.length;
- if(!n){ctx.fillStyle='#8fa3c7';ctx.font='14px system-ui,sans-serif';ctx.textAlign='center';
+ if(!n){ctx.fillStyle='#8fa3c7';ctx.font='20px system-ui,sans-serif';ctx.textAlign='center';
   ctx.fillText(S.mode==='demo'&&S.demo==='drag'?'Drag here (simulated)':S.mode==='live'?'Move a mouse over this graph':'Press Start Tracking or choose a Demo',W/2,H/2);ctx.textAlign='left'}
- ctx.lineWidth=2;ctx.lineJoin='round';ctx.strokeStyle=c.t;ctx.beginPath();
+ ctx.lineWidth=4;ctx.lineJoin='round';ctx.strokeStyle=c.t;ctx.beginPath();
  for(let i=0;i<n;i++){const p=P[i];if(i===0||p.brk)ctx.moveTo(p.px,p.py);else ctx.lineTo(p.px,p.py)}ctx.stroke();
  if(S.vec){ctx.fillStyle=c.t;ctx.strokeStyle=c.t;ctx.lineWidth=1;
   for(let i=Math.max(1,n-150);i<n;i++){const p=P[i],q=P[i-1];if(p.brk)continue;
    const dx=p.px-q.px,dy=p.py-q.py,L=Math.hypot(dx,dy);if(L<5)continue;
-   const a=Math.atan2(dy,dx),mx=(p.px+q.px)/2,my=(p.py+q.py)/2,s=7;
+   const a=Math.atan2(dy,dx),mx=(p.px+q.px)/2,my=(p.py+q.py)/2,s=11;
    ctx.beginPath();ctx.moveTo(mx+Math.cos(a)*s,my+Math.sin(a)*s);
    ctx.lineTo(mx+Math.cos(a+2.5)*s,my+Math.sin(a+2.5)*s);ctx.lineTo(mx+Math.cos(a-2.5)*s,my+Math.sin(a-2.5)*s);ctx.closePath();ctx.fill()}}
- if(n){const l=P[n-1];ctx.fillStyle=c.m;ctx.beginPath();ctx.arc(l.px,l.py,6,0,TAU);ctx.fill();
-  ctx.strokeStyle=c.m;ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(l.px,l.py,11,0,TAU);ctx.stroke();
-  if(S.lab){ctx.fillStyle='#e8f0ff';ctx.font='12px ui-monospace,Menlo,Consolas,monospace';
+ if(n){const l=P[n-1];ctx.fillStyle=c.m;ctx.beginPath();ctx.arc(l.px,l.py,10,0,TAU);ctx.fill();
+  ctx.strokeStyle=c.m;ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(l.px,l.py,16,0,TAU);ctx.stroke();
+  if(S.lab){ctx.fillStyle='#e8f0ff';ctx.font='16px ui-monospace,Menlo,Consolas,monospace';
    ctx.fillText('('+Math.round(gx(l))+', '+Math.round(gy(l))+')',clamp(l.px+14,2,W-80),clamp(l.py-12,14,H-4))}}
  if(S.mode==='demo'||(S.mode==='paused'&&S.was==='demo')){
   ctx.setLineDash([8,6]);ctx.strokeStyle='#fbbf24';ctx.lineWidth=3;ctx.strokeRect(1.5,1.5,W-3,H-3);ctx.setLineDash([]);
